@@ -1,6 +1,6 @@
 package com.capp.tech.bootstrap;
 
-import com.capp.tech.model.Guy;
+import com.capp.tech.model.entity.Guy;
 import com.capp.tech.services.GuyService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;

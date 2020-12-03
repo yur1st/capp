@@ -1,6 +1,6 @@
 package com.capp.tech.services.map;
 
-import com.capp.tech.model.BaseEntity;
+import com.capp.tech.model.entity.BaseEntity;
 
 import java.util.*;
 

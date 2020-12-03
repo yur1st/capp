@@ -1,4 +1,4 @@
-package com.capp.tech.model;
+package com.capp.tech.model.entity;
 
 public class BaseEntity {
 

@@ -1,4 +1,4 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
@@ -12,7 +12,7 @@ function App() {
             .then(message => {
                 setMessage(message);
             });
-        fetch('/api/map')
+        fetch('/api/guy')
             .then(response => response.json())
             .then((guys) => {
                 setItems(guys);

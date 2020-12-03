@@ -12,12 +12,14 @@ target/
 
 # dependencies
 /node_modules
+/ui/node_modules/
 
 # testing
 /coverage
 
 # production
 /build
+ui/build
 
 # misc
 .DS_Store
@@ -29,3 +31,4 @@ target/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+

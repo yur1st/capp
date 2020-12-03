@@ -1,22 +1,9 @@
-package model;
+package com.capp.tech.model;
 
-public class Guy {
+public class Guy extends BaseEntity {
 
-    private static int id;
     private String name;
     private String lastName;
-
-
-    public Guy(String name, String lastName) {
-        this.id = getId();
-        this.name = name;
-        this.lastName = lastName;
-    }
-
-    public Integer getId() {
-        id++;
-        return id;
-    }
 
     public String getName() {
         return name;

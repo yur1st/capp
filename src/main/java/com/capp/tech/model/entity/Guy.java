@@ -5,6 +5,9 @@ public class Guy extends BaseEntity {
     private String name;
     private String lastName;
 
+    public Guy() {
+    }
+
     public String getName() {
         return name;
     }

@@ -6,6 +6,9 @@ public class Address extends BaseEntity{
     private int postalIndex;
     private String address;
 
+    public Address() {
+    }
+
     public String getCity() {
         return city;
     }

@@ -19,7 +19,7 @@ target/
 
 # production
 /build
-ui/build
+/ui/build
 
 # misc
 .DS_Store

@@ -1,36 +1,17 @@
 package com.capp.tech.model.entity;
 
-import javax.persistence.*;
-import java.io.Serializable;
-
-@org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="StandartOperation")
-public class StandartOperation implements Serializable {
+public class StandartOperation {
 	public StandartOperation() {
 	}
 
-    @Column(name="StandartOperation_id", nullable=false, length=10)
-	@Id	
-	@GeneratedValue(generator="STANDARTOPERATION_STANDARTOPERATION_ID_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="STANDARTOPERATION_STANDARTOPERATION_ID_GENERATOR", strategy="native")	
-	private int standartOperation_id;
+    private int standartOperation_id;
 	
-	@Column(name="StandartOperation_name", nullable=false, length=255)	
 	private String standartOperation_name;
 	
-	@ManyToOne(targetEntity=AttributeSet.class, fetch=FetchType.LAZY)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinColumns(value={ @JoinColumn(name="AttributeSet_id", referencedColumnName="AttributeSet_id", nullable=false) }, foreignKey=@ForeignKey(name="FKStandartOp131375"))	
 	private AttributeSet attributeSetAttributeSet;
 	
-	@OneToMany(mappedBy="standartOperationStandartOperation", targetEntity= StandartRroute.class)
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_standartRroute = new java.util.HashSet();
 	
-	@OneToMany(mappedBy="standartOperationStandartOperation", targetEntity=Operation.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set ORM_operation = new java.util.HashSet();
 
     //@Transient

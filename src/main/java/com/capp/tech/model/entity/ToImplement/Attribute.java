@@ -1,6 +1,8 @@
-package com.capp.tech.model.entity;
+package com.capp.tech.model.entity.ToImplement;
 
-public class Attribute{
+import com.capp.tech.model.entity.AttributeLimitRange;
+
+public class Attribute {
 
 	private int attribute_id;
 

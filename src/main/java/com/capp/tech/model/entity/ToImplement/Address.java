@@ -1,6 +1,8 @@
-package com.capp.tech.model.entity;
+package com.capp.tech.model.entity.ToImplement;
 
-public class Address extends BaseEntity{
+import com.capp.tech.model.entity.BaseEntity;
+
+public class Address extends BaseEntity {
 
     private String city;
     private int postalIndex;

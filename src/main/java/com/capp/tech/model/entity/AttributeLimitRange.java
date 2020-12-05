@@ -1,14 +1,51 @@
 package com.capp.tech.model.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class AttributeLimitRange {
 
-	private int attributeLimitRange_id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	private Long id;
 
-	private float attributLimitRange_min;
+	private double attributeLimitRangeMin;
 
-	private float attributLimitRange_max;
+	private double attributeLimitRangeMax;
 
-    //@Transient
-	//public final AttributeSetCollection attribute = new AttributeSetCollection(this, _ormAdapter, ORMConstants.KEY_ATTRIBUTELIMITRANGE_ATTRIBUTE, ORMConstants.KEY_ATTRIBUTE_ATTRIBUTELIMITRANGEATTRIBUTELIMITRANGE, ORMConstants.KEY_MUL_ONE_TO_MANY);
+	public AttributeLimitRange() {
+	}
 
+	public AttributeLimitRange(Long id, float attributLimitRangeMin, float attributLimitRangeMax) {
+		this.id = id;
+		this.attributeLimitRangeMin = attributLimitRangeMin;
+		this.attributeLimitRangeMax = attributLimitRangeMax;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public double getAttributeLimitRangeMin() {
+		return attributeLimitRangeMin;
+	}
+
+	public void setAttributeLimitRangeMin(double attributLimitRangeMin) {
+		this.attributeLimitRangeMin = attributLimitRangeMin;
+	}
+
+	public double getAttributeLimitRangeMax() {
+		return attributeLimitRangeMax;
+	}
+
+	public void setAttributeLimitRangeMax(double attributLimitRangeMax) {
+		this.attributeLimitRangeMax = attributLimitRangeMax;
+	}
 }

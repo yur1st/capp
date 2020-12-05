@@ -2,13 +2,16 @@ package com.capp.tech.services.map;
 
 import com.capp.tech.model.entity.BaseEntity;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
 
 public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
     protected Map<Long, T> map = new HashMap<>();
 
-    Set<T> findAll() {
+    Iterable<T> findAll() {
         return new HashSet<>(map.values());
     }
 

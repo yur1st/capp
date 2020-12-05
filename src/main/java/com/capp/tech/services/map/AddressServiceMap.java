@@ -1,16 +1,14 @@
 package com.capp.tech.services.map;
 
-import com.capp.tech.model.entity.Address;
+import com.capp.tech.model.entity.ToImplement.Address;
 import com.capp.tech.services.AddressService;
 import org.springframework.stereotype.Service;
-
-import java.util.Set;
 
 @Service
 public class AddressServiceMap extends AbstractMapService<Address, Long> implements AddressService {
 
     @Override
-    public Set<Address> findAll() {
+    public Iterable<Address> findAll() {
         return super.findAll();
     }
 

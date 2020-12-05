@@ -1,7 +1,7 @@
 package com.capp.tech.bootstrap;
 
-import com.capp.tech.model.entity.Address;
-import com.capp.tech.model.entity.Guy;
+import com.capp.tech.model.entity.ToImplement.Address;
+import com.capp.tech.model.entity.ToImplement.Guy;
 import com.capp.tech.services.AddressService;
 import com.capp.tech.services.GuyService;
 import org.springframework.boot.CommandLineRunner;

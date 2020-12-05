@@ -1,4 +1,6 @@
-package com.capp.tech.model.entity;
+package com.capp.tech.model.entity.ToImplement;
+
+import com.capp.tech.model.entity.BaseEntity;
 
 public class Guy extends BaseEntity {
 

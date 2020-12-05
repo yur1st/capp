@@ -1,10 +1,8 @@
 package com.capp.tech.services.map;
 
-import com.capp.tech.model.entity.Guy;
+import com.capp.tech.model.entity.ToImplement.Guy;
 import com.capp.tech.services.GuyService;
 import org.springframework.stereotype.Service;
-
-import java.util.Set;
 
 @Service
 public class GuyServiceMap extends AbstractMapService<Guy, Long> implements GuyService {
@@ -14,7 +12,7 @@ public class GuyServiceMap extends AbstractMapService<Guy, Long> implements GuyS
     }
 
     @Override
-    public Set<Guy> findAll() {
+    public Iterable<Guy> findAll() {
         return super.findAll();
     }
 

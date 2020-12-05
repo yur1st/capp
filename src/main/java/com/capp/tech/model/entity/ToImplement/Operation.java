@@ -1,4 +1,4 @@
-package com.capp.tech.model.entity;
+package com.capp.tech.model.entity.ToImplement;
 
 public class Operation {
 	public Operation() {

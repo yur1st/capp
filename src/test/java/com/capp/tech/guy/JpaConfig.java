@@ -1,4 +1,4 @@
-package com.capp.tech.config;
+package com.capp.tech.guy;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.orm.jpa.JpaTransactionManager;

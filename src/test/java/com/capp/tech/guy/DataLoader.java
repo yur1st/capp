@@ -1,9 +1,7 @@
-package com.capp.tech.bootstrap;
+package com.capp.tech.guy;
 
-import com.capp.tech.model.entity.ToImplement.Address;
-import com.capp.tech.model.entity.ToImplement.Guy;
-import com.capp.tech.services.AddressService;
-import com.capp.tech.services.GuyService;
+import com.capp.tech.guy.map.Address;
+import com.capp.tech.guy.map.Guy;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 

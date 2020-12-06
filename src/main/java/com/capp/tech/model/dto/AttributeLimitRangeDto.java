@@ -2,16 +2,19 @@ package com.capp.tech.model.dto;
 
 public class AttributeLimitRangeDto {
 
-    private String attributeName;
+    private long attributeLimitRangeId;
     private float attributeLimitRangeMin;
     private float attributeLimitRangeMax;
 
-    public String getAttributeName() {
-        return attributeName;
+    public AttributeLimitRangeDto() {
     }
 
-    public void setAttributeName(String attributeName) {
-        this.attributeName = attributeName;
+    public long getAttributeLimitRangeId() {
+        return attributeLimitRangeId;
+    }
+
+    public void setAttributeLimitRangeId(long attributeLimitRangeId) {
+        this.attributeLimitRangeId = attributeLimitRangeId;
     }
 
     public float getAttributeLimitRangeMin() {

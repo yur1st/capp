@@ -1,7 +1,6 @@
-package com.capp.tech.services.map;
+package com.capp.tech.guy.map;
 
-import com.capp.tech.model.entity.ToImplement.Guy;
-import com.capp.tech.services.GuyService;
+import com.capp.tech.guy.GuyService;
 import org.springframework.stereotype.Service;
 
 @Service

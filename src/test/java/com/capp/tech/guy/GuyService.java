@@ -1,6 +1,6 @@
-package com.capp.tech.services;
+package com.capp.tech.guy;
 
-import com.capp.tech.model.entity.ToImplement.Guy;
+import com.capp.tech.guy.map.Guy;
 
 public interface GuyService extends CrudService<Guy, Long> {
 

@@ -1,7 +1,6 @@
-package com.capp.tech.controller;
+package com.capp.tech.guy;
 
-import com.capp.tech.model.entity.ToImplement.Guy;
-import com.capp.tech.services.GuyService;
+import com.capp.tech.guy.map.Guy;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

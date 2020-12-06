@@ -1,6 +1,6 @@
 package com.capp.tech.controller;
 
-import com.capp.tech.model.dto.GuyWithAddressDTO;
+import com.capp.tech.model.dto.AttributeLimitRangeDto;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 
-public class GuyWithAddressControllerTest extends AbstractTest {
+public class AttributeLimitRangeTest extends AbstractTest {
 
     @BeforeEach
     public void setUp(RestDocumentationContextProvider restDocumentation) {
@@ -20,19 +20,15 @@ public class GuyWithAddressControllerTest extends AbstractTest {
     }
 
     @Test
-    public void listGuysWithAddress() throws Exception {
-        String uri = "/api/gwa";
+    public void listAttributeLimitRange() throws Exception {
+        String uri = "/api/attribute/limitrange/";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andDo(document("sample")).andReturn();
 
         int status = mvcResult.getResponse().getStatus();
         assertEquals(200, status);
         String content = mvcResult.getResponse().getContentAsString();
-        GuyWithAddressDTO[] gwaList = super.mapFromJson(content, GuyWithAddressDTO[].class);
-        assertTrue(gwaList.length > 0);
-    }
-
-    @Test
-    public void guysWithAddressById() {
+        AttributeLimitRangeDto[] list = super.mapFromJson(content, AttributeLimitRangeDto[].class);
+        assertTrue(list.length > 0);
     }
 }

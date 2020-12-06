@@ -1,7 +1,6 @@
-package com.capp.tech.services.map;
+package com.capp.tech.guy.map;
 
-import com.capp.tech.model.entity.ToImplement.Address;
-import com.capp.tech.services.AddressService;
+import com.capp.tech.guy.AddressService;
 import org.springframework.stereotype.Service;
 
 @Service

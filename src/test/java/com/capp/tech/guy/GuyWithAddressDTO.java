@@ -1,4 +1,4 @@
-package com.capp.tech.model.dto;
+package com.capp.tech.guy;
 
 public class GuyWithAddressDTO {
 

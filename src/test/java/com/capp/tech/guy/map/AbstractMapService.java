@@ -1,4 +1,4 @@
-package com.capp.tech.services.map;
+package com.capp.tech.guy.map;
 
 import com.capp.tech.model.entity.BaseEntity;
 

@@ -1,4 +1,4 @@
-package com.capp.tech.controller;
+package com.capp.tech.guy;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

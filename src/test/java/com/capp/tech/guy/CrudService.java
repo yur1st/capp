@@ -1,4 +1,4 @@
-package com.capp.tech.services;
+package com.capp.tech.guy;
 
 public interface CrudService<T, ID> {
 

@@ -1,13 +1,17 @@
-package com.capp.tech.model.entity.ToImplement;
+package com.capp.tech.guy;
 
-import com.capp.tech.model.entity.BaseEntity;
+public class GuyDto {
 
-public class Guy extends BaseEntity {
-
+    private Long id;
     private String name;
-    private String lastName;
+    private String LastName;
 
-    public Guy() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -19,10 +23,10 @@ public class Guy extends BaseEntity {
     }
 
     public String getLastName() {
-        return lastName;
+        return LastName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        LastName = lastName;
     }
 }

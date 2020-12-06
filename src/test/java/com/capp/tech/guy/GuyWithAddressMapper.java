@@ -1,8 +1,7 @@
-package com.capp.tech.mapping;
+package com.capp.tech.guy;
 
-import com.capp.tech.model.dto.GuyWithAddressDTO;
-import com.capp.tech.model.entity.ToImplement.Address;
-import com.capp.tech.model.entity.ToImplement.Guy;
+import com.capp.tech.guy.map.Address;
+import com.capp.tech.guy.map.Guy;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;

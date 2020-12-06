@@ -1,6 +1,7 @@
 package com.capp.tech.controller;
 
 import com.capp.tech.model.dto.AttributeLimitRangeDto;
+import com.capp.tech.model.dto.revision.AttributeLimitRangeRevisionDto;
 import com.capp.tech.model.entity.AttributeLimitRange;
 import com.capp.tech.services.AttributeLimitRangeService;
 import org.springframework.http.HttpHeaders;
@@ -53,5 +54,18 @@ public class AttributeLimitRangeController {
         AttributeLimitRange range = service.update(id, limitRangeMin, limitRangeMax);
         return ResponseEntity.ok(range);
     }
+
+    @GetMapping(value = "api/attribute/limitrange/revision/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public AttributeLimitRangeRevisionDto getLastRevisionById(@PathVariable long id) {
+
+        return service.findLastRevisionById(id);
+    }
+
+    @GetMapping(value = "api/attribute/limitrange/revisions/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Iterable<AttributeLimitRangeRevisionDto> getAllRevisionById(@PathVariable long id) {
+
+        return service.findAllRevisionById(id);
+    }
+
 
 }

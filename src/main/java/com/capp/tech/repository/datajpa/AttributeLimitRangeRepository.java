@@ -2,7 +2,8 @@ package com.capp.tech.repository.datajpa;
 
 import com.capp.tech.model.entity.AttributeLimitRange;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.history.RevisionRepository;
 
-public interface AttributeLimitRangeRepository extends JpaRepository<AttributeLimitRange, Long> {
+public interface AttributeLimitRangeRepository extends RevisionRepository<AttributeLimitRange, Long, Integer>, JpaRepository<AttributeLimitRange, Long> {
 
 }

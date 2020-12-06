@@ -2,6 +2,7 @@ package com.capp.tech.services;
 
 import com.capp.tech.mapping.AttributeLimitRangeMapper;
 import com.capp.tech.model.dto.AttributeLimitRangeDto;
+import com.capp.tech.model.dto.revision.AttributeLimitRangeRevisionDto;
 import com.capp.tech.model.entity.AttributeLimitRange;
 import com.capp.tech.repository.datajpa.AttributeLimitRangeRepository;
 import org.springframework.stereotype.Service;
@@ -55,5 +56,15 @@ public class AttributeLimitRangeService {
         range.setAttributeLimitRangeMax(max);
         return repository.save(range);
 
+    }
+
+    public AttributeLimitRangeRevisionDto findLastRevisionById(long id) {
+        return mapper.toRevisionDto(repository.findLastChangeRevision(id).orElseThrow());
+    }
+
+    public Iterable<AttributeLimitRangeRevisionDto> findAllRevisionById(long id) {
+        return repository.findRevisions(id).stream()
+                .map(rev -> mapper.toRevisionDto(rev))
+                .collect(Collectors.toList());
     }
 }

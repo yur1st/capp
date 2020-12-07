@@ -19,26 +19,26 @@ public class AttributeLimitRangeController {
     }
 
 
-    @GetMapping(value = "api/attribute/limitrange/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "api/attribute/limitrange/list/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public AttributeLimitRangeDto getAttributeById(@PathVariable long id) {
 
         return service.findById(id);
     }
 
-    @GetMapping(value = "api/attribute/limitrange", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "api/attribute/limitrange/list", produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<AttributeLimitRangeDto> listAll() {
 
         return service.findAll();
     }
 
-    @DeleteMapping(value = "/api/attribute/limitrange/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/api/attribute/limitrange/delete/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deletebyId(@PathVariable long id) {
         service.deleteById(id);
         HttpHeaders responseHeaders = new HttpHeaders();
         return ResponseEntity.ok().headers(responseHeaders).body(true);
     }
 
-    @PostMapping(value = "api/attribute/limitrange", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "api/attribute/limitrange/create", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AttributeLimitRange> create(@ModelAttribute("attributeLimitRangeMin") double limitRangeMin,
                                                       @ModelAttribute("attributeLimitRangeMax") double limitRangeMax) {
 
@@ -46,7 +46,7 @@ public class AttributeLimitRangeController {
         return ResponseEntity.ok(range);
     }
 
-    @PutMapping(value = "api/attribute/limitrange", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "api/attribute/limitrange/update", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AttributeLimitRange> update(@ModelAttribute("limitId") long id,
                                                       @ModelAttribute("attributeLimitRangeMin") double limitRangeMin,
                                                       @ModelAttribute("attributeLimitRangeMax") double limitRangeMax) {

@@ -35,6 +35,10 @@ public class JpaDataLoader implements CommandLineRunner {
 
         System.out.println("Loaded Ranges for attributes....");
 
+        //OPERATOR("Оператор"),
+        //      ENGINEER("Технолог"),
+        //    ADMIN("Администратор");
+
     }
 }
 

@@ -117,9 +117,9 @@
                         <!-- other annotation processors -->
                     </annotationProcessorPaths>
                     <compilerArgs>
-                        <arg>-Amapstruct.defaultComponentModel=spring</arg>
-                        <arg>-Amapstruct.defaultInjectionStrategy=constructor</arg>
-                        <arg>-Amapstruct.verbose=false</arg>
+                        <compilerArg>-Amapstruct.defaultComponentModel=spring</compilerArg>
+                        <compilerArg>-Amapstruct.defaultInjectionStrategy=constructor</compilerArg>
+                        <compilerArg>-Amapstruct.verbose=false</compilerArg>
                     </compilerArgs>
                 </configuration>
             </plugin>

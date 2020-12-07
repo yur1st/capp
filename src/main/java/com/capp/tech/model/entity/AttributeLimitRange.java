@@ -4,21 +4,16 @@ import lombok.Data;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity
+@Entity(name = "AttributeLimitRange")
+@Table(name = "attribute_limit_range")
 @Audited
 @Data
-public class AttributeLimitRange {
+public class AttributeLimitRange extends BaseEntity {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private Long id;
+    private double min;
 
-	private double min;
-
-	private double max;
+    private double max;
 
 }

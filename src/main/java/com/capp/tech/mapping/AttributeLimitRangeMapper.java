@@ -6,22 +6,20 @@ import com.capp.tech.model.entity.AttributeLimitRange;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;
-import org.mapstruct.ReportingPolicy;
 import org.springframework.data.history.Revision;
 import org.springframework.data.history.RevisionMetadata;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-@Mapper(unmappedSourcePolicy = ReportingPolicy.IGNORE, componentModel = "spring")
+@Mapper
 public interface AttributeLimitRangeMapper {
 
-    @Mapping(source = "id", target = "attributeLimitRangeId")
     AttributeLimitRangeDto toDto(AttributeLimitRange range);
 
-    @Mapping(source = "entity", target = "attributeLimitRangeId", qualifiedByName = "entityId")
-    @Mapping(source = "entity", target = "attributeLimitRangeMin", qualifiedByName = "entityMin")
-    @Mapping(source = "entity", target = "attributeLimitRangeMax", qualifiedByName = "entityMax")
+    @Mapping(source = "entity", target = "id", qualifiedByName = "entityId")
+    @Mapping(source = "entity", target = "min", qualifiedByName = "entityMin")
+    @Mapping(source = "entity", target = "max", qualifiedByName = "entityMax")
     @Mapping(source = "metadata", target = "revisionDateTime", qualifiedByName = "revDate")
     @Mapping(source = "metadata", target = "revisionNumber", qualifiedByName = "revNumber")
     AttributeLimitRangeRevisionDto toRevisionDto(Revision<Integer, AttributeLimitRange> revision);
@@ -33,12 +31,12 @@ public interface AttributeLimitRangeMapper {
 
     @Named("entityMin")
     static double getEntityMin(AttributeLimitRange range) {
-        return range.getAttributeLimitRangeMin();
+        return range.getMin();
     }
 
     @Named("entityMax")
     static double getEntityMax(AttributeLimitRange range) {
-        return range.getAttributeLimitRangeMax();
+        return range.getMax();
     }
 
     @Named("revDate")

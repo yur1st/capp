@@ -36,8 +36,8 @@ public class AttributeLimitRangeService {
     public AttributeLimitRange save(double min, double max) {
 
         AttributeLimitRange range = new AttributeLimitRange();
-        range.setAttributeLimitRangeMin(min);
-        range.setAttributeLimitRangeMax(max);
+        range.setMin(min);
+        range.setMax(max);
         return repository.save(range);
     }
 
@@ -52,8 +52,8 @@ public class AttributeLimitRangeService {
     public AttributeLimitRange update(long id, double min, double max) {
         AttributeLimitRange range = new AttributeLimitRange();
         range.setId(id);
-        range.setAttributeLimitRangeMin(min);
-        range.setAttributeLimitRangeMax(max);
+        range.setMin(min);
+        range.setMax(max);
         return repository.save(range);
 
     }

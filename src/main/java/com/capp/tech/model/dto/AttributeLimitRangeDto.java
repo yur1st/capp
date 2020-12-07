@@ -1,35 +1,11 @@
 package com.capp.tech.model.dto;
 
-public class AttributeLimitRangeDto {
+import lombok.Data;
 
-    private long attributeLimitRangeId;
-    private float attributeLimitRangeMin;
-    private float attributeLimitRangeMax;
+@Data
+public class AttributeLimitRangeDto extends BaseDto {
 
-    public AttributeLimitRangeDto() {
-    }
+    private double min;
+    private double max;
 
-    public long getAttributeLimitRangeId() {
-        return attributeLimitRangeId;
-    }
-
-    public void setAttributeLimitRangeId(long attributeLimitRangeId) {
-        this.attributeLimitRangeId = attributeLimitRangeId;
-    }
-
-    public float getAttributeLimitRangeMin() {
-        return attributeLimitRangeMin;
-    }
-
-    public void setAttributeLimitRangeMin(float attributeLimitRangeMin) {
-        this.attributeLimitRangeMin = attributeLimitRangeMin;
-    }
-
-    public float getAttributeLimitRangeMax() {
-        return attributeLimitRangeMax;
-    }
-
-    public void setAttributeLimitRangeMax(float attributeLimitRangeMax) {
-        this.attributeLimitRangeMax = attributeLimitRangeMax;
-    }
 }

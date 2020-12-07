@@ -19,18 +19,18 @@ public class JpaDataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         AttributeLimitRange range1 = new AttributeLimitRange();
-        range1.setAttributeLimitRangeMin(0.75);
-        range1.setAttributeLimitRangeMax(1.26);
+        range1.setMin(0.75);
+        range1.setMax(1.26);
         repository.save(range1);
 
         AttributeLimitRange range2 = new AttributeLimitRange();
-        range2.setAttributeLimitRangeMin(2.75);
-        range2.setAttributeLimitRangeMax(112.26);
+        range2.setMin(2.75);
+        range2.setMax(112.26);
         repository.save(range2);
 
         AttributeLimitRange range3 = new AttributeLimitRange();
-        range3.setAttributeLimitRangeMin(0.34345);
-        range3.setAttributeLimitRangeMax(75.26);
+        range3.setMin(0.34345);
+        range3.setMax(75.26);
         repository.save(range3);
 
         System.out.println("Loaded Ranges for attributes....");

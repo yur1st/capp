@@ -21,7 +21,7 @@ public class AttributeLimitRangeTest extends AbstractTest {
 
     @Test
     public void listAttributeLimitRange() throws Exception {
-        String uri = "/api/attribute/limitrange/";
+        String uri = "/api/attribute/limitrange/list";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andDo(document("sample")).andReturn();
 

@@ -10,11 +10,8 @@ import java.util.Set;
 @Entity(name = "User")
 @Table(name = "users")
 @Audited
-public class User {
+public class User extends BaseEntity {
 
-    @Id
-    @GeneratedValue
-    private Long id;
     private String firstName;
     private String lastName;
     private String email;

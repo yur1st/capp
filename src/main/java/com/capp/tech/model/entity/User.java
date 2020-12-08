@@ -1,13 +1,15 @@
 package com.capp.tech.model.entity;
 
 import lombok.Data;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Data
 @Entity(name = "User")
-@Table(name = "user")
+@Table(name = "users")
+@Audited
 public class User {
 
     @Id
@@ -17,8 +19,12 @@ public class User {
     private String lastName;
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            orphanRemoval = true)
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
+    )
     private Set<Role> roles;
 
 }

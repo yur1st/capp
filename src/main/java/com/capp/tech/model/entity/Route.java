@@ -33,7 +33,6 @@ public class Route extends BaseEntity {
 	@JoinColumn(name = "device_id")
 	private Device device;
 
-
 	public void addOperation(Operation operation) {
 		OperationRoute operationRoute = new OperationRoute(operation, this);
 		operations.add(operationRoute);

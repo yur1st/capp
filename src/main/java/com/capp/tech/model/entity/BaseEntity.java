@@ -1,14 +1,20 @@
 package com.capp.tech.model.entity;
 
-public class BaseEntity {
+import lombok.Data;
 
-    private Long id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
-    public Long getId() {
-        return id;
-    }
+@MappedSuperclass
+@Data
+public abstract class BaseEntity {
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    protected Long id;
+
+    protected boolean isActive;
+
 }

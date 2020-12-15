@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "OperationStatus")
@@ -18,7 +19,7 @@ public class OperationStatus extends BaseEntity {
     private String name;
 
     @OneToMany(mappedBy = "status", cascade = CascadeType.ALL)
-    private List<Operation> operations;
+    private List<Operation> operations = new ArrayList<>();
 
     public void addOperation(Operation operation) {
         operations.add(operation);

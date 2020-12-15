@@ -44,14 +44,19 @@ public class JpaDataLoader implements CommandLineRunner {
         System.out.println("Loaded Ranges for attributes....");
 
         Role admin = new Role();
-        admin.setName("ADMIN");
-        admin.setValue("1");
+        admin.setName("Администратор");
+        admin.setValue("ADMIN");
         roleRepository.save(admin);
 
         Role user = new Role();
-        user.setName("USER");
-        user.setValue("2");
+        user.setName("Оператор");
+        user.setValue("OPERATOR");
         roleRepository.save(user);
+
+        Role engineer = new Role();
+        engineer.setName("Технолог");
+        engineer.setValue("ENGINEER");
+        roleRepository.save(engineer);
 
         System.out.println("Loaded Roles...");
 
@@ -59,6 +64,8 @@ public class JpaDataLoader implements CommandLineRunner {
         user1.setFirstName("Yuri");
         user1.setLastName("Okhvat");
         user1.setEmail("yu@o.ru");
+        user1.getRoles().add(admin);
+        user1.getRoles().add(engineer);
         userRepository.save(user1);
 
 

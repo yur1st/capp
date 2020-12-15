@@ -19,7 +19,7 @@ public class Attribute extends BaseEntity {
 
 	@OneToMany(mappedBy = "attribute", cascade = CascadeType.ALL,
 			orphanRemoval = true)
-	private Set<AttributeLimit> limitSet;
+	private Set<AttributeLimit> limitSet = new HashSet<>();
 
 	@OneToOne(mappedBy = "attribute", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private AttributeLimitRange limitRange;

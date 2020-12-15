@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,8 +26,8 @@ public class Operation extends BaseEntity {
 	@JoinColumn(name = "standart_operation_id")
 	private StandartOperation standartOperation;
 
-	@OneToMany(mappedBy = "operation", cascade = CascadeType.ALL)
-	private List<OperationRoute> routes;
+    @OneToMany(mappedBy = "operation", cascade = CascadeType.ALL)
+    private List<OperationRoute> routes = new ArrayList<>();
 
 	@Override
 	public boolean equals(Object o) {

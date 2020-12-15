@@ -1,7 +1,11 @@
 package com.capp.tech.bootstrap;
 
 import com.capp.tech.model.entity.AttributeLimitRange;
+import com.capp.tech.model.entity.Role;
+import com.capp.tech.model.entity.User;
 import com.capp.tech.repository.datajpa.AttributeLimitRangeRepository;
+import com.capp.tech.repository.datajpa.RoleRepository;
+import com.capp.tech.repository.datajpa.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -10,9 +14,13 @@ public class JpaDataLoader implements CommandLineRunner {
 
 
     private final AttributeLimitRangeRepository repository;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
-    public JpaDataLoader(AttributeLimitRangeRepository repository) {
+    public JpaDataLoader(AttributeLimitRangeRepository repository, UserRepository userRepository, RoleRepository roleRepository) {
         this.repository = repository;
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     @Override
@@ -34,6 +42,25 @@ public class JpaDataLoader implements CommandLineRunner {
         repository.save(range3);
 
         System.out.println("Loaded Ranges for attributes....");
+
+        Role admin = new Role();
+        admin.setName("ADMIN");
+        admin.setValue("1");
+        roleRepository.save(admin);
+
+        Role user = new Role();
+        user.setName("USER");
+        user.setValue("2");
+        roleRepository.save(user);
+
+        System.out.println("Loaded Roles...");
+
+        User user1 = new User();
+        user1.setFirstName("Yuri");
+        user1.setLastName("Okhvat");
+        user1.setEmail("yu@o.ru");
+        userRepository.save(user1);
+
 
         //OPERATOR("Оператор"),
         //      ENGINEER("Технолог"),

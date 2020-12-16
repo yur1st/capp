@@ -1,8 +1,7 @@
 package com.capp.tech.guy;
 
-import com.capp.tech.controller.AbstractTest;
+import com.capp.tech.controller.AbstractControllerTest;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -10,12 +9,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 
-public class GuyWithAddressControllerTest extends AbstractTest {
-
-    //@BeforeEach
-    public void setUp(RestDocumentationContextProvider restDocumentation) {
-        super.setUp(restDocumentation);
-    }
+public class GuyWithAddressControllerTest extends AbstractControllerTest {
 
     //@Test
     public void listGuysWithAddress() throws Exception {

@@ -29,6 +29,7 @@ public class JpaDataLoader implements CommandLineRunner {
         AttributeLimitRange range1 = new AttributeLimitRange();
         range1.setMin(0.75);
         range1.setMax(1.26);
+        range1.setActive(true);
         repository.save(range1);
 
         AttributeLimitRange range2 = new AttributeLimitRange();

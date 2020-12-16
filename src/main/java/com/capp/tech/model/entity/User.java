@@ -4,7 +4,7 @@ import lombok.Data;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,7 +23,7 @@ public class User extends BaseEntity {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles = new LinkedHashSet<>();
 
     @Override
     public boolean equals(Object o) {

@@ -5,10 +5,7 @@ import org.hibernate.annotations.NaturalId;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity(name = "StandartOperation")
 @Table(name = "standart_operation")
@@ -23,10 +20,10 @@ public class StandartOperation extends BaseEntity {
 	private Set<Attribute> attributes = new HashSet<>();
 
 	@OneToMany(mappedBy = "standartOperation", cascade = CascadeType.ALL)
-	private Set<Operation> operations;
+	private Set<Operation> operations = new HashSet<>();
 
 	@ManyToMany(mappedBy = "standartOperations")
-	private List<StandartRoute> standartRoutes;
+	private List<StandartRoute> standartRoutes = new ArrayList<>();
 
 	public void addOperation(Operation operation) {
 		operations.add(operation);

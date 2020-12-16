@@ -4,6 +4,7 @@ import lombok.Data;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "Workplace")
@@ -15,7 +16,7 @@ public class Workplace extends BaseEntity {
 	private String name;
 
 	@OneToMany(mappedBy = "workplace", cascade = CascadeType.ALL)
-	private List<OperationRoute> operationRoutes;
+	private List<OperationRoute> operationRoutes = new ArrayList<>();
 
 
 	@ManyToOne

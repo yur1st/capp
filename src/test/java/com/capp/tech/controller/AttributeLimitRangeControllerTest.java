@@ -1,10 +1,8 @@
 package com.capp.tech.controller;
 
 import com.capp.tech.model.dto.AttributeLimitRangeDto;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.RestDocumentationContextProvider;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
@@ -12,16 +10,11 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 
-public class AttributeLimitRangeTest extends AbstractTest {
-
-    @BeforeEach
-    public void setUp(RestDocumentationContextProvider restDocumentation) {
-        super.setUp(restDocumentation);
-    }
+public class AttributeLimitRangeControllerTest extends AbstractControllerTest {
 
     @Test
     public void listAttributeLimitRange() throws Exception {
-        String uri = "/api/attribute/limitrange/";
+        String uri = "/api/attribute/limitrange/list";
         MvcResult mvcResult = mvc.perform(MockMvcRequestBuilders.get(uri)
                 .accept(MediaType.APPLICATION_JSON_VALUE)).andDo(document("sample")).andReturn();
 

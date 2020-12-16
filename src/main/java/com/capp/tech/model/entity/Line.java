@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "Line")
@@ -18,7 +19,7 @@ public class Line extends BaseEntity {
     private String lineName;
 
     @OneToMany(mappedBy = "line", cascade = CascadeType.ALL)
-    private List<Workplace> workplaces;
+    private List<Workplace> workplaces = new ArrayList<>();
 
     public void addWorkplace(Workplace workplace) {
         workplaces.add(workplace);

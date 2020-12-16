@@ -1,18 +1,17 @@
-package com.capp.tech.model.entity;
+package com.capp.tech.model.dto;
 
 import lombok.Data;
-import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
+import java.util.LinkedHashSet;
 import java.util.Objects;
 
-@Entity
 @Data
-@Audited
-public class Role extends BaseEntity {
+public class UserDto extends BaseDto {
 
-    private String value;
-    private String name;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private LinkedHashSet<RoleDto> roles;
 
     @Override
     public boolean equals(Object o) {
@@ -25,13 +24,12 @@ public class Role extends BaseEntity {
         if (!super.equals(o)) {
             return false;
         }
-        Role role = (Role) o;
-        return Objects.equals(value, role.value);
+        UserDto dto = (UserDto) o;
+        return Objects.equals(email, dto.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), value);
+        return Objects.hash(super.hashCode(), email);
     }
-
 }

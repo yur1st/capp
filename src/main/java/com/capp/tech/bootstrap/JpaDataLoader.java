@@ -1,7 +1,11 @@
 package com.capp.tech.bootstrap;
 
 import com.capp.tech.model.entity.AttributeLimitRange;
+import com.capp.tech.model.entity.Role;
+import com.capp.tech.model.entity.User;
 import com.capp.tech.repository.datajpa.AttributeLimitRangeRepository;
+import com.capp.tech.repository.datajpa.RoleRepository;
+import com.capp.tech.repository.datajpa.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -10,9 +14,13 @@ public class JpaDataLoader implements CommandLineRunner {
 
 
     private final AttributeLimitRangeRepository repository;
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
-    public JpaDataLoader(AttributeLimitRangeRepository repository) {
+    public JpaDataLoader(AttributeLimitRangeRepository repository, UserRepository userRepository, RoleRepository roleRepository) {
         this.repository = repository;
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
     }
 
     @Override
@@ -21,6 +29,7 @@ public class JpaDataLoader implements CommandLineRunner {
         AttributeLimitRange range1 = new AttributeLimitRange();
         range1.setMin(0.75);
         range1.setMax(1.26);
+        range1.setActive(true);
         repository.save(range1);
 
         AttributeLimitRange range2 = new AttributeLimitRange();
@@ -35,9 +44,38 @@ public class JpaDataLoader implements CommandLineRunner {
 
         System.out.println("Loaded Ranges for attributes....");
 
-        //OPERATOR("Оператор"),
-        //      ENGINEER("Технолог"),
-        //    ADMIN("Администратор");
+        Role admin = new Role();
+        admin.setName("Администратор");
+        admin.setValue("ADMIN");
+        roleRepository.save(admin);
+
+        Role operator = new Role();
+        operator.setName("Оператор");
+        operator.setValue("OPERATOR");
+        roleRepository.save(operator);
+
+        Role engineer = new Role();
+        engineer.setName("Технолог");
+        engineer.setValue("ENGINEER");
+        roleRepository.save(engineer);
+
+        System.out.println("Loaded Roles...");
+
+        User user1 = new User();
+        user1.setFirstName("Yuri");
+        user1.setLastName("Okhvat");
+        user1.setEmail("yu@o.ru");
+        user1.getRoles().add(admin);
+        user1.getRoles().add(engineer);
+        userRepository.save(user1);
+
+        User user2 = new User();
+        user2.setFirstName("Imyarek");
+        user2.setLastName("Nektoev");
+        user2.setEmail("imya@nekto.ru");
+        user2.getRoles().add(engineer);
+        user2.getRoles().add(operator);
+        userRepository.save(user2);
 
     }
 }

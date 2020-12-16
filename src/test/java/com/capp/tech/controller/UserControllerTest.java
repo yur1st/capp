@@ -1,6 +1,7 @@
 package com.capp.tech.controller;
 
 import com.capp.tech.mapping.UserMapper;
+import com.capp.tech.model.dto.RoleDto;
 import com.capp.tech.model.dto.UserDto;
 import com.capp.tech.model.entity.Role;
 import com.capp.tech.model.entity.User;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
@@ -43,11 +46,15 @@ class UserControllerTest extends AbstractControllerTest {
         user1.setFirstName("Yuri");
         user1.setLastName("Okhvat");
         user1.setEmail("yu@o.ru");
-        user1.getRoles().add(engineer);
-        user1.getRoles().add(admin);
 
+        user1.getRoles().add(admin);
+        user1.getRoles().add(engineer);
         UserDto userDto = userMapper.toDto(user1);
-        assertEquals(foundDto, userDto);
+        assertEquals(userDto.getEmail(), foundDto.getEmail());
+
+        Set<RoleDto> one = foundDto.getRoles();
+        Set<RoleDto> two = userDto.getRoles();
+        assertEquals(one.removeAll(userDto.getRoles()), two.removeAll(foundDto.getRoles()));
     }
 
     @Test

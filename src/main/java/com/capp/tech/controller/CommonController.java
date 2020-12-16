@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.*;
 
 public interface CommonController<D extends BaseDto, R extends D> {
 
-    @GetMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = {"{id}", "/{id}"}, produces = MediaType.APPLICATION_JSON_VALUE)
     D getAttributeById(@PathVariable Long id);
 
-    @GetMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE)
     Iterable<D> listAll();
 
-    @DeleteMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = {"{id}", "/{id}"}, produces = MediaType.APPLICATION_JSON_VALUE)
     void deletebyId(@PathVariable Long id);
 
     @GetMapping(value = "revision/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -22,10 +22,10 @@ public interface CommonController<D extends BaseDto, R extends D> {
     @GetMapping(value = "revisions/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     Iterable<R> getAllRevisionById(@PathVariable long id);
 
-    @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = {"/", ""}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<D> create(@RequestBody D object);
 
-    @PutMapping(value = "{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PutMapping(value = {"{id}", "/{id}"}, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<D> update(@RequestBody long id, @RequestBody D object);
 
 }

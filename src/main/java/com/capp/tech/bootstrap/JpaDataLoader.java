@@ -49,10 +49,10 @@ public class JpaDataLoader implements CommandLineRunner {
         admin.setValue("ADMIN");
         roleRepository.save(admin);
 
-        Role user = new Role();
-        user.setName("Оператор");
-        user.setValue("OPERATOR");
-        roleRepository.save(user);
+        Role operator = new Role();
+        operator.setName("Оператор");
+        operator.setValue("OPERATOR");
+        roleRepository.save(operator);
 
         Role engineer = new Role();
         engineer.setName("Технолог");
@@ -69,10 +69,13 @@ public class JpaDataLoader implements CommandLineRunner {
         user1.getRoles().add(engineer);
         userRepository.save(user1);
 
-
-        //OPERATOR("Оператор"),
-        //      ENGINEER("Технолог"),
-        //    ADMIN("Администратор");
+        User user2 = new User();
+        user2.setFirstName("Imyarek");
+        user2.setLastName("Nektoev");
+        user2.setEmail("imya@nekto.ru");
+        user2.getRoles().add(engineer);
+        user2.getRoles().add(operator);
+        userRepository.save(user2);
 
     }
 }

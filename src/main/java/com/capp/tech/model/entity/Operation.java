@@ -1,11 +1,13 @@
 package com.capp.tech.model.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.Type;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Entity(name = "Operation")
@@ -14,29 +16,36 @@ import java.util.Objects;
 @Audited
 public class Operation extends BaseEntity {
 
-	private Double cycleTime;
+    private Double cycleTime;
 
-	private String attributeMap;
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    private Map<String, String> attributeMap;
 
-	@ManyToOne
-	@JoinColumn(name = "status_id")
-	private OperationStatus status;
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private OperationStatus status;
 
-	@ManyToOne
-	@JoinColumn(name = "standart_operation_id")
-	private StandartOperation standartOperation;
+    @ManyToOne
+    @JoinColumn(name = "standart_operation_id")
+    private StandartOperation standartOperation;
 
     @OneToMany(mappedBy = "operation", cascade = CascadeType.ALL)
     private List<OperationRoute> routes = new ArrayList<>();
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) {
-			return true;
-		}
-		if (o == null || getClass() != o.getClass()) {
-			return false;
-		}
+    public Operation addAttributeValue(String key, String value) {
+        attributeMap.put(key, value);
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
 		Operation operation = (Operation) o;
 

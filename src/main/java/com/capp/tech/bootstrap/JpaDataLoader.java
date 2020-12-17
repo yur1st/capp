@@ -1,9 +1,11 @@
 package com.capp.tech.bootstrap;
 
+import com.capp.tech.model.entity.AttributeLimit;
 import com.capp.tech.model.entity.AttributeLimitRange;
 import com.capp.tech.model.entity.Role;
 import com.capp.tech.model.entity.User;
 import com.capp.tech.repository.datajpa.AttributeLimitRangeRepository;
+import com.capp.tech.repository.datajpa.AttributeLimitRepository;
 import com.capp.tech.repository.datajpa.RoleRepository;
 import com.capp.tech.repository.datajpa.UserRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -16,11 +18,13 @@ public class JpaDataLoader implements CommandLineRunner {
     private final AttributeLimitRangeRepository repository;
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final AttributeLimitRepository attributeLimitRepository;
 
-    public JpaDataLoader(AttributeLimitRangeRepository repository, UserRepository userRepository, RoleRepository roleRepository) {
+    public JpaDataLoader(AttributeLimitRangeRepository repository, UserRepository userRepository, RoleRepository roleRepository, AttributeLimitRepository attributeLimitRepository) {
         this.repository = repository;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+        this.attributeLimitRepository = attributeLimitRepository;
     }
 
     @Override
@@ -76,6 +80,13 @@ public class JpaDataLoader implements CommandLineRunner {
         user2.getRoles().add(engineer);
         user2.getRoles().add(operator);
         userRepository.save(user2);
+
+        AttributeLimit limit = new AttributeLimit();
+        limit.getPossibleValues().add("Odin");
+        limit.getPossibleValues().add("Dva");
+        limit.getPossibleValues().add("Pyat");
+        limit.getPossibleValues().add("Shest");
+        attributeLimitRepository.save(limit);
 
     }
 }

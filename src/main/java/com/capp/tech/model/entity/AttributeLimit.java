@@ -1,12 +1,12 @@
 package com.capp.tech.model.entity;
 
 import lombok.Data;
+import org.hibernate.annotations.Type;
 import org.hibernate.envers.Audited;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "AttributeLimit")
 @Table(name = "attribute_limit")
@@ -14,9 +14,11 @@ import javax.persistence.Table;
 @Audited
 public class AttributeLimit extends BaseEntity {
 
-    private String possibleValue;
+    @Type(type = "jsonb")
+    @Column(columnDefinition = "jsonb")
+    private Set<String> possibleValues = new HashSet<>();
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "attribute_id")
     private Attribute attribute;
 

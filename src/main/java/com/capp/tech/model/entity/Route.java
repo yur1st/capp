@@ -4,8 +4,8 @@ import lombok.Data;
 import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -18,7 +18,7 @@ public class Route extends BaseEntity {
 	private String name;
 
 	@OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
-	private List<OperationRoute> operations = new ArrayList<>();
+	private List<OperationRoute> operations = new LinkedList<>();
 
 	@ManyToOne
 	@JoinColumn(name = "status_id")

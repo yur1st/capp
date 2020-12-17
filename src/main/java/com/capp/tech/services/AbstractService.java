@@ -6,8 +6,10 @@ import com.capp.tech.model.entity.BaseEntity;
 import com.capp.tech.repository.datajpa.CommonRepository;
 import org.springframework.data.history.Revision;
 
+import javax.transaction.Transactional;
 import java.util.stream.Collectors;
 
+@Transactional
 public abstract class AbstractService<E extends BaseEntity,
         C extends CommonRepository<E>, D extends BaseDto, R extends D,
         M extends CommonMapper<E, D, R>>

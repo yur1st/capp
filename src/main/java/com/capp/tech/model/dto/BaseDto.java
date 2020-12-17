@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public abstract class BaseDto {
 
-    private Long id;
+    protected Long id;
+    protected boolean isActive;
 
 }

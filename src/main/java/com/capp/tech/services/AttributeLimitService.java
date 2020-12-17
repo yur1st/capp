@@ -17,8 +17,14 @@ public class AttributeLimitService extends AbstractService<AttributeLimit, Attri
     }
 
     public AttributeLimitDto addLimit(String limit, Long id) {
-        repository.addLimit(limit, id);
-        return mapper.toDto(repository.findById(id).get());
+        AttributeLimit attributeLimit = repository.findById(id).get();
+        attributeLimit.getPossibleValues().add(limit);
+        return mapper.toDto(repository.save(attributeLimit));
+    }
 
+    public AttributeLimitDto removeLimit(String limit, Long id) {
+        AttributeLimit attributeLimit = repository.findById(id).get();
+        attributeLimit.getPossibleValues().remove(limit);
+        return mapper.toDto(repository.save(attributeLimit));
     }
 }

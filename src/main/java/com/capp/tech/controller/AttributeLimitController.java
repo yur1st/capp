@@ -25,4 +25,10 @@ public class AttributeLimitController extends AbstractController<AttributeLimit,
         AttributeLimitDto limitDto = service.addLimit(value, Long.parseLong(id));
         return ResponseEntity.ok(limitDto);
     }
+
+    @PatchMapping(value = {"{id}/removelimit", "/{id}/removelimit"}, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<AttributeLimitDto> removeLimit(@PathVariable String id, @RequestParam("value") String value) {
+        AttributeLimitDto limitDto = service.removeLimit(value, Long.parseLong(id));
+        return ResponseEntity.ok(limitDto);
+    }
 }

@@ -18,7 +18,7 @@ public class AttributeLimit extends BaseEntity {
     @Column(columnDefinition = "jsonb")
     private Set<String> possibleValues = new HashSet<>();
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "attribute_id")
     private Attribute attribute;
 

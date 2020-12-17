@@ -17,9 +17,8 @@ public class Attribute extends BaseEntity {
 
 	private boolean isInfluenceCT;
 
-	@OneToMany(mappedBy = "attribute", cascade = CascadeType.ALL,
-			orphanRemoval = true)
-	private Set<AttributeLimit> limitSet = new HashSet<>();
+	@OneToOne(mappedBy = "attribute", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private AttributeLimit limitSet;
 
 	@OneToOne(mappedBy = "attribute", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private AttributeLimitRange limitRange;
@@ -36,14 +35,9 @@ public class Attribute extends BaseEntity {
 			inverseJoinColumns = @JoinColumn(name = "standart_operation_id"))
 	private Set<StandartOperation> standartOperations = new HashSet<>();
 
-	public void addLimitSet(AttributeLimit limit) {
-		limitSet.add(limit);
+	public void setLimitSet(AttributeLimit limit) {
+		this.limitSet = limit;
 		limit.setAttribute(this);
-	}
-
-	public void removeLimitSet(AttributeLimit limit) {
-		limitSet.remove(limit);
-		limit.setAttribute(null);
 	}
 
 	public void setLimitRange(AttributeLimitRange range) {

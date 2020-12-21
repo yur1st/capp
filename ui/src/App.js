@@ -1,45 +1,32 @@
-import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
-import './App.css';
+import * as React from 'react';
+import PostIcon from '@material-ui/icons/Book';
+import UserIcon from '@material-ui/icons/Group';
+import {Admin, ListGuesser, Resource} from 'react-admin';
+import jsonServerProvider from 'ra-data-json-server';
 
-function App() {
-    const [message, setMessage] = useState("");
-    const [items, setItems] = useState([]);
+import {PostCreate, PostEdit, PostList, PostShow} from './posts';
+import {UserList} from './users';
+import Dashboard from './Dashboard';
+import authProvider from './authProvider';
 
-    useEffect(() => {
-        fetch('/api/hello')
-            .then(response => response.text())
-            .then(message => {
-                setMessage(message);
-            });
-        fetch('/api/guy')
-            .then(response => response.json())
-            .then((guys) => {
-                setItems(guys);
-            });
-    }, [])
-
-    return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-                <h1 className="App-title">{message}</h1>
-            </header>
-            <p className="App-intro">
-                To get started, edit <code>src/App.js</code> and save to reload.
-            </p>
-            <table>
-                <th>Name</th>
-                <th>Last name</th>
-                {items.map(guys => (
-                    <tr key={guys.id}>
-                        <td>{guys.name}</td>
-                        <td>{guys.lastName}</td>
-                    </tr>
-                ))}
-            </table>
-        </div>
-    )
-}
-
+const App = () => (
+    <Admin
+        dataProvider={jsonServerProvider(
+            'https://jsonplaceholder.typicode.com'
+        )}
+        authProvider={authProvider}
+        dashboard={Dashboard}
+    >
+        <Resource
+            name="posts"
+            icon={PostIcon}
+            list={PostList}
+            edit={PostEdit}
+            create={PostCreate}
+            show={PostShow}
+        />
+        <Resource name="users" icon={UserIcon} list={UserList}/>
+        <Resource name="comments" list={ListGuesser}/>
+    </Admin>
+);
 export default App;

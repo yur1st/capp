@@ -1,6 +1,6 @@
 package com.capp.tech.model.graphql;
 
-import com.capp.tech.model.dto.RoleDto;
+import com.capp.tech.model.entity.Role;
 import com.capp.tech.services.RoleService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.stereotype.Component;
@@ -18,12 +18,12 @@ public class RoleQuery implements GraphQLQueryResolver {
         this.roleService = roleService;
     }
 
-    public List<RoleDto> getRoles() {
+    public List<Role> getRoles() {
         return StreamSupport.stream(roleService.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
 
-    public RoleDto getRole(final Long id) {
+    public Role getRole(final Long id) {
         return roleService.findById(id);
     }
 }

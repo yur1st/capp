@@ -25,4 +25,5 @@ public abstract class BaseEntity {
 
     protected boolean isActive;
 
+
 }

@@ -1,10 +1,13 @@
 package com.capp.tech.model.graphql;
 
-import com.capp.tech.model.dto.UserDto;
+import com.capp.tech.model.entity.User;
+import com.capp.tech.model.entity.revision.UserRevision;
 import com.capp.tech.services.UserService;
 import graphql.kickstart.tools.GraphQLQueryResolver;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -18,13 +21,23 @@ public class UserQuery implements GraphQLQueryResolver {
         this.userService = userService;
     }
 
-    public List<UserDto> getUsers() {
+    public List<User> getUsers() {
         return StreamSupport.stream(this.userService.findAll().spliterator(), false)
                 .collect(Collectors.toList());
     }
 
-    public UserDto getUser(final Long id) {
+    public User getUser(final Long id) {
         return this.userService.findById(id);
+    }
+
+    public List<UserRevision> getUserRevisions(final Long id) {
+        return StreamSupport.stream(userService.findAllRevisionsById(id).spliterator(), false)
+                .map(rev -> UserRevision.builder()
+                        .revisionNumber(rev.getRequiredRevisionNumber())
+                        .revisionDateTime(LocalDateTime.ofInstant(rev.getRequiredRevisionInstant(), ZoneOffset.UTC))
+                        .user(rev.getEntity())
+                        .build())
+                .collect(Collectors.toList());
     }
 
 }

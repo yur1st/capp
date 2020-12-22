@@ -1,25 +1,25 @@
 package com.capp.tech.services;
 
-import com.capp.tech.model.dto.BaseDto;
 import com.capp.tech.model.entity.BaseEntity;
+import org.springframework.data.history.Revision;
 
-public interface CommonService<E extends BaseEntity, D extends BaseDto, R extends D> {
+public interface CommonService<E extends BaseEntity> {
 
-    D save(D object);
+    E save(E object);
 
-    D update(Long id, D object);
+    E update(Long id, E object);
 
-    Iterable<D> findAll();
+    Iterable<E> findAll();
 
-    D findById(Long id);
+    E findById(Long id);
 
-    void delete(D object);
+    void delete(E object);
 
     void deleteById(Long id);
 
-    Iterable<R> findAllRevisionsById(Long id);
+    Iterable<Revision<Integer, E>> findAllRevisionsById(Long id);
 
-    R findLastRevisionById(Long id);
+    Revision<Integer, E> findLastRevisionById(Long id);
 
 
 }

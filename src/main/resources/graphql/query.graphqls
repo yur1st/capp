@@ -1,25 +1,35 @@
 type Query {
-    users:[UserDto]
-    user(id:ID):UserDto
-    roles:[RoleDto]
-    role(id:ID):RoleDto
+    users:[User]
+    user(id:ID):User
+    userRevisions(id:ID):[UserRevision]
+    roles:[Role]
+    role(id:ID):Role
 }
 
 type Mutation {
-    createUser(firstName : String!, lastName : String, email : String!, roles : [String], isActive : Boolean):UserDto
-    createRole(name : String!,isActive : Boolean):RoleDto
+    createUser(firstName : String!, lastName : String, email : String!, roles : [String], isActive : Boolean):User
+    createRole(name : String!,isActive : Boolean):Role
 }
 
-type UserDto {
+type User {
     id : ID!,
     firstName : String,
     lastName : String,
     email : String!,
-    roles : [RoleDto],
+    roles : [Role],
     isActive : Boolean
+
 }
 
-type RoleDto {
+type UserRevision {
+    revisionDateTime : String,
+    revisionNumber : Int,
+    user : User
+
+}
+
+type Role {
+    id:ID,
     name:String,
     isActive : Boolean
 

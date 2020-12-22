@@ -1,6 +1,6 @@
 package com.capp.tech.model.graphql;
 
-import com.capp.tech.model.dto.RoleDto;
+import com.capp.tech.model.entity.Role;
 import com.capp.tech.services.RoleService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import org.springframework.stereotype.Component;
@@ -14,10 +14,10 @@ public class RoleMutation implements GraphQLMutationResolver {
         this.roleService = roleService;
     }
 
-    public RoleDto createRole(final String name, final boolean isActive) {
-        RoleDto roleDto = new RoleDto();
-        roleDto.setName(name);
-        roleDto.setActive(isActive);
-        return roleService.save(roleDto);
+    public Role createRole(final String name, final boolean isActive) {
+        Role role = new Role();
+        role.setName(name);
+        role.setActive(isActive);
+        return roleService.save(role);
     }
 }

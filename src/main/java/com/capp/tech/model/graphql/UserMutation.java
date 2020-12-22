@@ -1,7 +1,7 @@
 package com.capp.tech.model.graphql;
 
-import com.capp.tech.model.dto.RoleDto;
-import com.capp.tech.model.dto.UserDto;
+import com.capp.tech.model.entity.Role;
+import com.capp.tech.model.entity.User;
 import com.capp.tech.services.RoleService;
 import com.capp.tech.services.UserService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
@@ -21,17 +21,17 @@ public class UserMutation implements GraphQLMutationResolver {
         this.roleService = roleService;
     }
 
-    public UserDto createUser(final String firstName, final String lastName, final String email, final Set<String> roles, final boolean isActive) {
-        LinkedHashSet<RoleDto> roleSet = new LinkedHashSet<>();
+    public User createUser(final String firstName, final String lastName, final String email, final Set<String> roles, final boolean isActive) {
+        LinkedHashSet<Role> roleSet = new LinkedHashSet<>();
         roles.forEach(id -> roleSet.add(roleService.findById(Long.parseLong(id))));
 
-        UserDto userDto = new UserDto();
-        userDto.setFirstName(firstName);
-        userDto.setLastName(lastName);
-        userDto.setEmail(email);
-        userDto.setRoles(roleSet);
-        userDto.setActive(isActive);
-        return userService.save(userDto);
+        User user = new User();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setEmail(email);
+        user.setRoles(roleSet);
+        user.setActive(isActive);
+        return userService.save(user);
 
     }
 }

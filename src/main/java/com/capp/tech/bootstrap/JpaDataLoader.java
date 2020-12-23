@@ -48,19 +48,13 @@ public class JpaDataLoader implements CommandLineRunner {
 
         System.out.println("Loaded Ranges for attributes....");
 
-        Role admin = new Role();
-        admin.setName("Администратор");
-        admin.setValue("ADMIN");
+        Role admin = new Role("ADMIN");
         roleRepository.save(admin);
 
-        Role operator = new Role();
-        operator.setName("Оператор");
-        operator.setValue("OPERATOR");
+        Role operator = new Role("OPERATOR");
         roleRepository.save(operator);
 
-        Role engineer = new Role();
-        engineer.setName("Технолог");
-        engineer.setValue("ENGINEER");
+        Role engineer = new Role("ENGINEER");
         roleRepository.save(engineer);
 
         System.out.println("Loaded Roles...");
@@ -69,17 +63,28 @@ public class JpaDataLoader implements CommandLineRunner {
         user1.setFirstName("Yuri");
         user1.setLastName("Okhvat");
         user1.setEmail("yu@o.ru");
+        user1.setPassword("$2y$12$qy5lLrpBLIwz8RziWBCT4.auEtRJlur1Z2EdLMmEVrGDKbVeV9v6i");
+        user1.setUsername("admin");
         user1.getRoles().add(admin);
-        user1.getRoles().add(engineer);
         userRepository.save(user1);
 
         User user2 = new User();
         user2.setFirstName("Imyarek");
         user2.setLastName("Nektoev");
         user2.setEmail("imya@nekto.ru");
+        user2.setPassword("$2y$12$sbkzaUnSoYrg5i9yCUub4eJZC6XaC8YwZxNaG455WHv/EOYpqWX/y");
+        user2.setUsername("engineer");
         user2.getRoles().add(engineer);
-        user2.getRoles().add(operator);
         userRepository.save(user2);
+
+        User user3 = new User();
+        user3.setFirstName("Vinnie");
+        user3.setLastName("Pooh");
+        user3.setEmail("vinnie@les.ru");
+        user3.setPassword("$2y$12$Ojy6.pEqGfR.WP.RQntYyeO8mjvnnI6I4GWLGTuCPN1wSvQiKMI4m");
+        user3.setUsername("operator");
+        user3.getRoles().add(operator);
+        userRepository.save(user3);
 
         AttributeLimit limit = new AttributeLimit();
         limit.getPossibleValues().add("Odin");

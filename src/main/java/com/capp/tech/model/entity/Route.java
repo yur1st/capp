@@ -15,20 +15,24 @@ import java.util.Objects;
 @Audited
 public class Route extends BaseEntity {
 
-	private String name;
+    private String name;
 
-	@OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
-	private List<OperationRoute> operations = new LinkedList<>();
+    @OneToMany(mappedBy = "route", cascade = CascadeType.ALL)
+    private List<OperationRoute> operations = new LinkedList<>();
 
-	@ManyToOne
-	@JoinColumn(name = "status_id")
-	private RouteStatus status;
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User approvedBy;
 
-	@ManyToOne(fetch = FetchType.LAZY,
-			optional = false,
-			cascade = CascadeType.PERSIST)
-	@JoinColumn(name = "standart_route_id")
-	private StandartRoute standartRoute;
+    @ManyToOne
+    @JoinColumn(name = "status_id")
+    private RouteStatus status;
+
+    @ManyToOne(fetch = FetchType.LAZY,
+            optional = false,
+            cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "standart_route_id")
+    private StandartRoute standartRoute;
 
 	@OneToOne
 	@JoinColumn(name = "device_id")

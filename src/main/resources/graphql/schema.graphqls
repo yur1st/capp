@@ -9,12 +9,15 @@ type Query {
 type Mutation {
     createUser(firstName : String!, lastName : String, email : String!, roles : [String], isActive : Boolean):User
     createRole(name : String!,isActive : Boolean):Role
+    login(email: String!, password: String!):User
 }
 
 type User {
     id : ID!,
     firstName : String,
     lastName : String,
+    username: String,
+    token : String,
     email : String!,
     roles : [Role],
     isActive : Boolean

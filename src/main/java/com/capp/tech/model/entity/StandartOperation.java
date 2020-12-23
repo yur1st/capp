@@ -13,17 +13,21 @@ import java.util.*;
 @Audited
 public class StandartOperation extends BaseEntity {
 
-	@NaturalId
-	private String name;
+    @NaturalId
+    private String name;
 
-	@ManyToMany(mappedBy = "standartOperations")
-	private Set<Attribute> attributes = new HashSet<>();
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User approvedBy;
 
-	@OneToMany(mappedBy = "standartOperation", cascade = CascadeType.ALL)
-	private Set<Operation> operations = new HashSet<>();
+    @ManyToMany(mappedBy = "standartOperations")
+    private Set<Attribute> attributes = new HashSet<>();
 
-	@ManyToMany(mappedBy = "standartOperations")
-	private List<StandartRoute> standartRoutes = new ArrayList<>();
+    @OneToMany(mappedBy = "standartOperation", cascade = CascadeType.ALL)
+    private Set<Operation> operations = new HashSet<>();
+
+    @ManyToMany(mappedBy = "standartOperations")
+    private List<StandartRoute> standartRoutes = new ArrayList<>();
 
 	public void addOperation(Operation operation) {
 		operations.add(operation);

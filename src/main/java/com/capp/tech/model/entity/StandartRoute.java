@@ -13,9 +13,15 @@ import java.util.List;
 @Audited
 public class StandartRoute extends BaseEntity {
 
-	private String name;
+    private String name;
 
-	private int operationPriority;
+    private int operationPriority;
+
+    private boolean isApproved;
+
+    @OneToOne
+    @JoinColumn(unique = true)
+    private User approvedBy;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(name = "standart_route_operation",
@@ -36,8 +42,5 @@ public class StandartRoute extends BaseEntity {
 		routes.remove(route);
 		route.setStandartRoute(null);
 	}
-
-	//@Transient
-	//public final RouteSetCollection route = new RouteSetCollection(this, _ormAdapter, ORMConstants.KEY_STANDARTRROUTE_ROUTE, ORMConstants.KEY_ROUTE_STD_ROUTESTD_ROUTE, ORMConstants.KEY_MUL_ONE_TO_MANY);
 
 }

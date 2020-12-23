@@ -6,7 +6,6 @@
 */
 (function () {
     'use strict';
-
     function supportsProperty(p) {
         var prefixes = ['Webkit', 'Moz', 'O', 'ms'],
             i,
@@ -23,7 +22,6 @@
         }
         return ret;
     }
-
     var icons;
     if (!supportsProperty('fontFeatureSettings')) {
         icons = {
@@ -74,7 +72,7 @@
             'none': '&#xe92c;',
             'celsius': '&#xe92d;',
             'fahrenheit': '&#xe92e;',
-            '0': 0
+          '0': 0
         };
         delete icons['0'];
         window.icomoonLiga = function (els) {

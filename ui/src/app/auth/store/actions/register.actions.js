@@ -14,9 +14,9 @@ export function submitRegister({displayName, password, email}) {
             email
         })
             .then((user) => {
-                    dispatch(UserActions.setUserData(user));
-                    return dispatch({
-                        type: REGISTER_SUCCESS
+                dispatch(UserActions.setUserData(user));
+                return dispatch({
+                    type: REGISTER_SUCCESS
                     });
                 }
             )

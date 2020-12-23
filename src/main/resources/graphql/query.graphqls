@@ -1,0 +1,36 @@
+type Query {
+    users:[User]
+    user(id:ID):User
+    userRevisions(id:ID):[UserRevision]
+    roles:[Role]
+    role(id:ID):Role
+}
+
+type Mutation {
+    createUser(firstName : String!, lastName : String, email : String!, roles : [String], isActive : Boolean):User
+    createRole(name : String!,isActive : Boolean):Role
+}
+
+type User {
+    id : ID!,
+    firstName : String,
+    lastName : String,
+    email : String!,
+    roles : [Role],
+    isActive : Boolean
+
+}
+
+type UserRevision {
+    revisionDateTime : String,
+    revisionNumber : Int,
+    user : User
+
+}
+
+type Role {
+    id:ID,
+    name:String,
+    isActive : Boolean
+
+}

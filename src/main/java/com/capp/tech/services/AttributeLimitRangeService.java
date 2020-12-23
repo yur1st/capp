@@ -1,36 +1,28 @@
 package com.capp.tech.services;
 
-import com.capp.tech.mapping.AttributeLimitRangeMapper;
-import com.capp.tech.model.dto.AttributeLimitRangeDto;
-import com.capp.tech.model.dto.revision.AttributeLimitRangeRevisionDto;
 import com.capp.tech.model.entity.AttributeLimitRange;
 import com.capp.tech.repository.datajpa.AttributeLimitRangeRepository;
+import org.springframework.data.history.Revision;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 @Service
 @Transactional
 public class AttributeLimitRangeService {
 
     private final AttributeLimitRangeRepository repository;
-    private final AttributeLimitRangeMapper mapper;
 
-    public AttributeLimitRangeService(AttributeLimitRangeRepository repository, AttributeLimitRangeMapper mapper) {
+
+    public AttributeLimitRangeService(AttributeLimitRangeRepository repository) {
         this.repository = repository;
-        this.mapper = mapper;
     }
 
-    public Iterable<AttributeLimitRangeDto> findAll() {
-        return StreamSupport.stream(repository.findAll().spliterator(), false)
-                .map(value -> mapper.toDto(value))
-                .collect(Collectors.toList());
+    public Iterable<AttributeLimitRange> findAll() {
+        return repository.findAll();
     }
 
-    public AttributeLimitRangeDto findById(Long aLong) {
-        return mapper.toDto(repository.findById(aLong).orElseThrow());
+    public AttributeLimitRange findById(Long aLong) {
+        return repository.findById(aLong).orElseThrow();
     }
 
     public AttributeLimitRange save(double min, double max) {
@@ -58,13 +50,11 @@ public class AttributeLimitRangeService {
 
     }
 
-    public AttributeLimitRangeRevisionDto findLastRevisionById(long id) {
-        return mapper.toRevisionDto(repository.findLastChangeRevision(id).orElseThrow());
+    public Revision<Integer, AttributeLimitRange> findLastRevisionById(long id) {
+        return repository.findLastChangeRevision(id).orElseThrow();
     }
 
-    public Iterable<AttributeLimitRangeRevisionDto> findAllRevisionById(long id) {
-        return repository.findRevisions(id).stream()
-                .map(rev -> mapper.toRevisionDto(rev))
-                .collect(Collectors.toList());
+    public Iterable<Revision<Integer, AttributeLimitRange>> findAllRevisionById(long id) {
+        return repository.findRevisions(id);
     }
 }

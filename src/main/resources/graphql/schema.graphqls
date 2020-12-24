@@ -12,28 +12,6 @@ type Mutation {
     login(email: String!, password: String!):User
 }
 
-type User {
-    id : ID!,
-    firstName : String,
-    lastName : String,
-    username: String,
-    token : String,
-    email : String!,
-    roles : [Role],
-    isActive : Boolean
 
-}
 
-type UserRevision {
-    revisionDateTime : String,
-    revisionNumber : Int,
-    user : User
 
-}
-
-type Role {
-    id:ID,
-    name:String,
-    isActive : Boolean
-
-}
